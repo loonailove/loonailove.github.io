@@ -34,12 +34,23 @@ p{margin:0 0 18px}
 .links{font:13px var(--mono);margin-top:26px}
 .links span{color:var(--faint);margin:0 10px}
 .open{font:13px var(--mono);color:var(--sage);margin:6px 0 22px}
-.sys{margin-top:38px;padding-top:20px;border-top:1px solid #34332f}
-.ws{display:flex;gap:6px;margin:10px 0}
-.w{width:22px;height:22px;background:#3a3936;cursor:pointer;transition:.12s}
-.w:hover{background:var(--faint)}
-.w.dead{background:var(--red);animation:sh .25s steps(2) 3}
-.w.heal{background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.sys{margin-top:38px;padding:22px 20px;border:1px solid var(--gold);background:#292928;position:relative;overflow:hidden;box-shadow:6px 6px 0 #151514}
+.sys:before{content:'';position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);background-size:200% 100%;animation:seam 3s linear infinite}
+@keyframes seam{from{background-position:200% 0}to{background-position:-200% 0}}
+.kh{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}
+.kh h2{margin:0;color:var(--gold);text-shadow:0 0 12px rgba(232,184,74,.5)}
+#brk{font:600 12px var(--mono);background:var(--gold);color:#232322;border:0;padding:9px 13px;cursor:pointer;box-shadow:3px 3px 0 #151514;transition:.12s}
+#brk:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #151514}
+#brk:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #151514}
+.ws{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin:18px 0}
+.w{aspect-ratio:1;min-width:0;cursor:pointer;background:#2f4a3d;box-shadow:inset 0 0 0 2px var(--sage),0 0 8px rgba(143,193,165,.25);transition:.12s}
+.w:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 2px var(--ink),0 0 14px rgba(143,193,165,.5)}
+.w.dead{background:var(--red);box-shadow:inset 0 0 0 2px #ff9aa1,0 0 18px var(--red);animation:sh .25s steps(2) 3}
+.w.heal{background:linear-gradient(135deg,var(--gold) 42%,#fff3c4 50%,var(--gold) 58%);box-shadow:0 0 20px var(--gold)}
+.ks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.ks div{font:11px var(--mono);color:var(--faint);text-align:center;border:1px solid #3a3936;background:#232322;padding:10px 4px}
+.ks strong{display:block;font:16px var(--px);color:var(--gold);margin-bottom:6px}
+@media(max-width:520px){.ws{grid-template-columns:repeat(5,1fr)}}
 @keyframes sh{50%{transform:translateX(3px)}}
 #log{font:12px var(--mono);color:var(--faint);min-height:20px}
 #log em{color:var(--gold);font-style:normal}
@@ -99,6 +110,7 @@ footer{font:12px var(--mono);color:var(--faint);margin-top:50px}
 @keyframes gr{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 .pl.out{opacity:0}
 @media(max-width:520px){.col{grid-template-columns:1fr}.nums{grid-template-columns:1fr 1fr}}
+.pxp{display:block;max-width:100%;height:auto;image-rendering:pixelated;cursor:pointer;background:#1b1b1a;margin:14px 0 6px}
 </style>
 </head>
 <body>
@@ -111,19 +123,19 @@ footer{font:12px var(--mono);color:var(--faint);margin-top:50px}
 <div class="top"><canvas id="ph" width="128" height="128" aria-label="Photo of Daiana, pixelated until you hover"></canvas>
 <div><h1>hey, i’m daiana.</h1><div class="hint">hover the photo to un-pixel it</div></div></div>
 <p>my work centers around building <b>systems</b> and measuring whether they actually <b>work</b>.</p>
-<p>i study computer science &amp; engineering at <a href="https://acs.pub.ro" target="_blank" rel="noopener">politehnica university of bucharest</a>. i’m building a fault-tolerant <b>distributed scheduler</b> in java, a multi-scanner <b>container vulnerability engine</b> in go, and <b>embedded</b> diagnostics on an esp32. i won 1st place at the itfest hackathon (40 teams) and i’m working my way into open source.</p>
+<p>i study computer science &amp; engineering at <a href="https://acs.pub.ro" target="_blank" rel="noopener">politehnica university of bucharest</a>. i’m building a fault-tolerant <b>distributed scheduler</b> in java, a multi-scanner <b>container vulnerability engine</b> in go, and <b>embedded</b> diagnostics on an esp32. my team won 1st place at the itfest hackathon (40 teams) and i’m working my way into open source.</p>
 <p>i’m interested in distributed systems, security, embedded systems, and chaos engineering.</p>
 <div class="open">&gt; open to summer 2027 internships in systems, security and embedded</div>
 <p>want to chat? say hi at <a href="mailto:daianagab29@gmail.com">daianagab29@gmail.com</a></p>
 <div class="links"><a href="https://github.com/loonailove" target="_blank" rel="noopener">github</a><span>·</span><a href="https://www.linkedin.com/in/daiana-dindere/" target="_blank" rel="noopener">linkedin</a></div>
-<div class="facts"><div class="wd"><div class="wl">studying</div>b.sc. computer science &amp; engineering<br>upb · 2024–2028</div><div class="wd"><div class="wd"><div class="wl">focus</div>systems, security,<br>embedded</div><div class="wd"><div class="wl">comfortable with</div>c/c++, python, go, java,<br>javascript, x86 assembly</div><div class="wd"><div class="wl">speaks</div>english (fluent)<br>romanian (native)</div></div>
-<div class="sys"><div class="hint">kintsugi mode: click a worker to kill it, or type “kintsugi”</div><div class="ws" id="ws"></div><div id="log">all workers healthy · tasks lost: 0</div></div>
-<div class="wg">
-<div class="col">
-<div class="wd"><div class="wl">bucharest</div><div class="clock" id="clk">--:--:--</div></div>
-<div class="wd"><div class="wl">currently</div>building: kintsugi scheduler<br>reading: designing data-intensive applications<br>practicing: leetcode, neetcode 150</div>
-<div class="nums"><div class="wd"><strong data-to="94" data-s="%">0</strong>shot detection</div><div class="wd"><strong data-to="19" data-s="/20">0</strong>capacitors</div><div class="wd"><strong data-to="1808" data-s="">0</strong>findings merged</div><div class="wd"><strong data-to="0" data-s="">0</strong>tasks lost</div></div>
-</div></div>
+<div class="facts"><div class="wd"><div class="wl">studying</div>b.sc. computer science &amp; engineering<br>upb · 2024–2028</div><div class="wd"><div class="wl">focus</div>systems, security,<br>embedded</div><div class="wd"><div class="wl">comfortable with</div>c/c++, python, go, java,<br>javascript, x86 assembly</div><div class="wd"><div class="wl">speaks</div>english (fluent)<br>romanian (native)</div></div>
+<div class="sys">
+<div class="kh"><h2>kintsugi mode</h2><button id="brk" type="button">break everything</button></div>
+<div class="hint">click a worker to kill it, or type “kintsugi”. broken things get repaired in gold.</div>
+<div class="ws" id="ws"></div>
+<div class="ks"><div><strong id="krep">0</strong>repairs</div><div><strong>0</strong>tasks lost</div><div><strong id="kalive">10</strong>of 10 alive</div></div>
+<div id="log">all workers healthy · tasks lost: 0</div>
+</div>
 <div class="chips"><span>c/c++</span><span>python</span><span>go</span><span>java</span><span>spring boot</span><span>javascript</span><span>x86 asm</span><span>bash</span><span>linux</span><span>docker</span><span>git</span><span>esp32</span><span>next.js</span><span>flask</span><span>tensorflow.js</span></div>
 <div class="tlh"><h2>timeline</h2><div class="hint">keep scrolling: the tulip follows the gold seam</div></div>
 <div class="tl" id="tl"><div class="fill" id="fill"></div><canvas id="tul" width="7" height="9"></canvas>
@@ -153,6 +165,9 @@ footer{font:12px var(--mono);color:var(--faint);margin-top:50px}
 <div class="item" style="--i:0"><h3>education</h3><div class="m">2024 – 2028</div><p>b.sc. computer science &amp; engineering, politehnica university of bucharest. coursework: data structures and algorithms, algorithm design, operating systems, computer networks.</p></div>
 <div class="item" style="--i:1"><h3>1st place, itfest hackathon<em>nov 2026</em></h3><p>out of 40 teams. organized by sisc, sponsored by adobe.</p></div>
 <div class="item" style="--i:2"><h3>security summer school @ upb<em>jul 2026</em></h3><p>web security track. solved 57 jeopardy-style ctf challenges covering xss, sqli, csrf and other owasp top 10 categories. team ranked 2 of 16.</p></div>
+<canvas class="pxp" data-src="sss.jpg" data-w="520" aria-label="Security Summer School group photo, pixelated until you hover"></canvas><div class="hint" style="margin-bottom:22px">security summer school @ upb. hover to un-pixel.</div>
+<div class="item" style="--i:6"><h3>cdl open source program</h3><p>hands-on program on contributing to open source: git and github workflows, issues and pull requests. working towards my first merged contributions.</p></div>
+<canvas class="pxp" data-src="cdl.jpg" data-w="320" aria-label="CDL open source program workshop, pixelated until you hover"></canvas><div class="hint" style="margin-bottom:22px">cdl open source program. hover to un-pixel.</div>
 <div class="item" style="--i:3"><h3>springit hackathon<em>mar 2026</em></h3><p>team of 4. built the shot-detection algorithm and a custom 3d court visualizer.</p></div>
 <div class="item" style="--i:4"><h3>upb student scientific communications session<em>2026</em></h3><p>presented the capacitor state-of-health monitor.</p></div>
 <div class="item" style="--i:5"><h3>ccna 2<em>oct 2026</em></h3><p>switching, routing and wireless essentials, cisco networking academy.</p></div>
@@ -201,16 +216,17 @@ pc.addEventListener('mouseleave',function(){resolve([100,70,44])});
 pc.addEventListener('click',function(){resolve([4,8,16,32,64,128])});
 
 // kintsugi workers
-var ws=document.getElementById('ws'),W=[],log=document.getElementById('log'),rep=0;
-for(var n=1;n<=10;n++){(function(n){var d=document.createElement('div');d.className='w';d.onclick=function(){kill(n-1)};ws.appendChild(d);W.push(d)})(n)}
-function kill(k){var d=W[k];if(d.className!=='w')return;d.className='w dead';log.textContent='worker-'+(k+1)+' died · lease expired · tasks rescheduled';
-setTimeout(function(){d.className='w heal';rep++;log.innerHTML='worker-'+(k+1)+' <em>repaired in gold</em> · repairs: '+rep+' · tasks lost: 0';
+var ws=document.getElementById('ws'),W=[],log=document.getElementById('log'),rep=0,dead=0,
+kr=document.getElementById('krep'),ka=document.getElementById('kalive'),bk=document.getElementById('brk');
+function setT(el,v){if(el)el.textContent=v}
+if(ws){for(var n=1;n<=10;n++){(function(n){var d=document.createElement('div');d.className='w';d.onclick=function(){kill(n-1)};ws.appendChild(d);W.push(d)})(n)}}
+function kill(k){var d=W[k];if(!d||d.className!=='w')return;d.className='w dead';dead++;setT(ka,10-dead);
+if(log)log.textContent='worker-'+(k+1)+' died · lease expired · tasks rescheduled';
+setTimeout(function(){d.className='w heal';rep++;dead--;setT(kr,rep);setT(ka,10-dead);
+if(log)log.innerHTML='worker-'+(k+1)+' <em>repaired in gold</em> · repairs: '+rep+' · tasks lost: 0';
 setTimeout(function(){d.className='w'},1200)},1200)}
 setInterval(function(){if(document.getElementById('home').classList.contains('show'))kill(Math.floor(Math.random()*10))},5000);
-
-// bucharest clock
-var ck=document.getElementById('clk');
-function tick(){ck.textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/Bucharest'})}tick();setInterval(tick,1000);
+if(bk)bk.onclick=function(){for(var k=0;k<10;k++)(function(k){setTimeout(function(){kill(k)},k*120)})(k)};
 
 // count-up numbers
 var done=false;
@@ -251,6 +267,22 @@ if(buf==='kintsugi'){buf='';for(var k=0;k<10;k++)(function(k){setTimeout(functio
 document.addEventListener('click',function(e){for(var k=0;k<6;k++){var s=document.createElement('i');s.className='sp';s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';
 s.style.setProperty('--x',(Math.random()*60-30)+'px');s.style.setProperty('--y',(Math.random()*60-30)+'px');document.body.appendChild(s);setTimeout(function(el){el.remove()},650,s)}});
 })();
+</script>
+<script>
+document.querySelectorAll('canvas.pxp').forEach(function(c){
+  var img=new Image(),W=+c.dataset.w||480,off=document.createElement('canvas'),ctx=c.getContext('2d'),t;
+  img.onload=function(){
+    var H=Math.round(W*img.naturalHeight/img.naturalWidth);
+    c.width=W;c.height=H;
+    function d(n){var h=Math.max(1,Math.round(n*H/W));off.width=n;off.height=h;off.getContext('2d').drawImage(img,0,0,n,h);ctx.imageSmoothingEnabled=false;ctx.clearRect(0,0,W,H);ctx.drawImage(off,0,0,n,h,0,0,W,H)}
+    function go(seq){var k=0;clearInterval(t);t=setInterval(function(){d(seq[k++]);if(k>=seq.length)clearInterval(t)},120)}
+    go([4,6,9,14,20,28,40]);
+    c.addEventListener('mouseenter',function(){go([56,80,120,180,W])});
+    c.addEventListener('mouseleave',function(){go([140,90,60,40])});
+    c.addEventListener('click',function(){go([4,8,16,32,64,128,W])});
+  };
+  img.src=c.dataset.src;
+});
 </script>
 </body>
 </html>
